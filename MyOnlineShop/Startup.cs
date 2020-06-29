@@ -64,6 +64,10 @@ namespace MyOnlineShop
                     name: "default",
                     areaName:"Customer",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapAreaControllerRoute(
+                    name: "default",
+                    areaName: "Admin",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

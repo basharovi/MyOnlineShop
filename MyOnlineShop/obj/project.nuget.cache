@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "6dSEuVXxiScGCrR6vqLaMukuu9813NUw62+MG2GF+Wnw6Kta+jboPjyfdG7friNpZzbFk5O8f0r0XOhZ52V0ug==",
+  "dgSpecHash": "TXcMUMt3U4CgzcQObdDizxauC6ako0DHYvONjspLVvnTFJYkzKLgV0W+KC/b87kqz3AD2bqAm2F/nz6RxSYoOA==",
   "success": true,
   "projectFilePath": "H:\\Running_Projects\\MyOnlineShop\\MyOnlineShop\\MyOnlineShop.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bashar Ovi\\.nuget\\packages\\bootstrap\\4.5.0\\bootstrap.4.5.0.nupkg.sha512",
+    "C:\\Users\\Bashar Ovi\\.nuget\\packages\\jquery\\3.5.1\\jquery.3.5.1.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.5\\microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.5\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.5.nupkg.sha512",
@@ -61,6 +63,7 @@
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\Bashar Ovi\\.nuget\\packages\\popper.js\\1.16.0\\popper.js.1.16.0.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Bashar Ovi\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
