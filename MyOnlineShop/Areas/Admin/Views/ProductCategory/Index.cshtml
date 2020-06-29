@@ -1,6 +1,4 @@
-﻿@using MyOnlineShop.Models
-
-@model IEnumerable<ProductCategory>
+﻿@model IEnumerable<ProductCategory>
 
 @{
     ViewData["Title"] = "Product Categories";
@@ -13,43 +11,32 @@
 <hr />
 <div class="text-right">
     <a class="btn btn-outline-info" asp-area="Admin"
-       asp-controller="ProductCategory"
-       asp-action="Create">
+       asp-controller="ProductCategory" asp-action="Create">
         <i class="fa fa-plus"> </i>
         Create Category
     </a>
 </div>
 
-<br/>
+<br />
 
 
-<table class="table table-striped">
+<table class="table table-striped text-center">
     <thead class="table-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
+        <tr>
+            <th scope="col">Serial</th>
+            <th scope="col">Category</th>
+            <th scope="col">#</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>twitter</td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Category</td>
+                <td> <partial name="_ButtonPartial"/> </td>
+            </tr>
+        }
+
     </tbody>
 </table>

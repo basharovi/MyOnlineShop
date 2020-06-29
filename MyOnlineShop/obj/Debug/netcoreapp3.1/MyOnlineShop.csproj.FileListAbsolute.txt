@@ -164,3 +164,4 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineSh
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductCategory\Create.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ButtonPartial.cshtml.g.cs
