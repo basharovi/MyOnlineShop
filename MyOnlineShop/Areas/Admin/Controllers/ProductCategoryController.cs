@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using MyOnlineShop.Data;
-using MyOnlineShop.Data.Repository;
+using MyOnlineShop.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 
 namespace MyOnlineShop.Areas.Admin.Controllers
 {
@@ -9,7 +12,6 @@ namespace MyOnlineShop.Areas.Admin.Controllers
     public class ProductCategoryController : Controller
     {
         private readonly ILogger<ProductCategoryController> _logger;
-        private readonly ProductRepository _repository;
         private readonly ApplicationDbContext _db;
 
 
@@ -18,13 +20,37 @@ namespace MyOnlineShop.Areas.Admin.Controllers
             ApplicationDbContext db)
         {
             _logger = logger;
-            //_repository = repository;
             _db = db;
         }
 
         public IActionResult Index()
         {
             return View(_db.ProductCategories);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ProductCategory productCategory)
+        {
+            if(!ModelState.IsValid)
+                return View();
+
+            _db.Add(productCategory);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
