@@ -9,12 +9,14 @@
     Product Categories
 </h3>
 <hr />
-<div class="text-right">
+<div class="text-left">
     <a class="btn btn-outline-info" asp-area="Admin"
        asp-controller="ProductCategory" asp-action="Create">
         <i class="fa fa-plus"> </i>
         Create Category
     </a>
+    <br /> <br />
+    <button class="btn btn-outline-info fas fa-mouse" onclick="mouseClick()"></button>
 </div>
 
 <br />
@@ -22,21 +24,34 @@
 
 <table class="table table-striped text-center">
     <thead class="table-dark">
-        <tr>
-            <th scope="col">Serial</th>
-            <th scope="col">Category</th>
-            <th scope="col">#</th>
-        </tr>
+    <tr>
+        <th scope="col">Serial</th>
+        <th scope="col">Category</th>
+        <th scope="col">#</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Category</td>
-                <td> <partial name="_ButtonPartial" model="item.Id"/> </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Category</td>
+            <td> <partial name="_ButtonPartial" model="item.Id"/> </td>
+        </tr>
+    }
 
     </tbody>
 </table>
+
+@section Scripts
+{
+    <script>
+        $(function() {
+            //toastr.success('Thanks ):');
+        });
+
+        function mouseClick() {
+            toastr.success('Thanks ):');
+        }
+    </script>
+}

@@ -40,6 +40,17 @@ namespace MyOnlineShop.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Show(int? id)
+        {
+            var productCategory = _db.ProductCategories.Find(id);
+            if (productCategory == null)
+            {
+                return NotFound();
+            }
+
+            return View(productCategory);
+        }
+
         [HttpGet]
         public IActionResult Update(int? id)
         {
