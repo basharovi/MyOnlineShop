@@ -12,5 +12,7 @@ namespace MyOnlineShop.Data
         }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
+
+        public DbSet<SpecialTag> SpecialTags { get; set; }
     }
 }
