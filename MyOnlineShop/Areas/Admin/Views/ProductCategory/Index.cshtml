@@ -46,8 +46,14 @@
 @section Scripts
 {
     <script>
-        $(function() {
-            //toastr.success('Thanks ):');
+        $(function () {
+
+            var crudMessage = '@TempData["crudMessage"]';
+
+            if (crudMessage !== '') {
+                toastr.success(crudMessage);
+            }
+            
         });
 
         function mouseClick() {

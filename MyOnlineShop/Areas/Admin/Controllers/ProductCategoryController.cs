@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
-using MyOnlineShop.Data;
+﻿using MyOnlineShop.Data;
+using System.Diagnostics;
 using MyOnlineShop.Models;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
 
 
 namespace MyOnlineShop.Areas.Admin.Controllers
@@ -35,7 +36,10 @@ namespace MyOnlineShop.Areas.Admin.Controllers
 
 
             _db.Add(productCategory);
+            //TempData["isCreated"] = await _db.SaveChangesAsync() > 0;
             await _db.SaveChangesAsync();
+
+            TempData["crudMessage"] = "Product Category has been Created Successfully!";
 
             return RedirectToAction(nameof(Index));
         }
@@ -74,6 +78,8 @@ namespace MyOnlineShop.Areas.Admin.Controllers
             _db.Update(productCategory);
             await _db.SaveChangesAsync();
 
+            TempData["crudMessage"] = "Product Category has been Updated Successfully!";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -87,6 +93,8 @@ namespace MyOnlineShop.Areas.Admin.Controllers
 
             _db.ProductCategories.Remove(productCategory);
             _db.SaveChanges();
+
+            TempData["crudMessage"] = "Product Category has been Deleted Successfully!";
 
             return RedirectToAction(nameof(Index));
         }
