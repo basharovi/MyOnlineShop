@@ -1,17 +1,17 @@
 ﻿@model int
 
     <div class="">
-        <a title="Update" asp-action="Update" asp-controller="ProductCategory" 
+        <a title="Update" asp-action="Update" asp-controller="@ViewData["CrudController"]"
            asp-route-id="@Model" class="btn btn-outline-primary">
             <i class="fas fa-edit"> </i>
         </a>
 
-        <a title="Show" asp-action="Show" asp-controller="ProductCategory" 
+        <a title="Show" asp-action="Show" asp-controller="@ViewData["CrudController"]"
            asp-route-id="@Model" class="btn btn-outline-info">
             <i class="fas fa-list"> </i>
         </a>
 
-        <a title="Delete" asp-action="Delete" asp-controller="ProductCategory" 
+        <a title="Delete" asp-action="Delete" asp-controller="@ViewData["CrudController"]" 
            asp-route-id="@Model" class="btn btn-outline-danger">
             <i class="fas fa-trash-alt"> </i>
         </a>
