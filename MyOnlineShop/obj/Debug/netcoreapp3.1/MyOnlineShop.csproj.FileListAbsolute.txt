@@ -143,6 +143,10 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Area
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductCategory\Index.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductCategory\Show.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductCategory\Update.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Create.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Show.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Update.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SpecialTag\Create.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SpecialTag\Index.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SpecialTag\Show.cshtml.g.cs

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace MyOnlineShop.Models
 {
@@ -19,6 +20,9 @@ namespace MyOnlineShop.Models
         public string Color { get; set; }
 
         public string Image { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
 
         [Required]

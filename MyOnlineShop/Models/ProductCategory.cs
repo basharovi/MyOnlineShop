@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MyOnlineShop.Models
 {
@@ -8,5 +10,6 @@ namespace MyOnlineShop.Models
 
         [Required]
         public string Category { get; set; }
+
     }
 }

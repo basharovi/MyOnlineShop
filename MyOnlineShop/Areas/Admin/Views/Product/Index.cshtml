@@ -1,21 +1,20 @@
-﻿@model IEnumerable<SpecialTag>
+﻿@model IEnumerable<Product>
 
 @{
-    ViewData["Title"] = "Special Tags";
-    ViewData["CrudController"] = "SpecialTag";
-
+    ViewData["Title"] = "Product Categories";
+    ViewData["CrudController"] = "ProductCategory";
     Layout = "_Layout";
 }
 
-    <h3 class="text-center">
-        Product Special Tag List
-    </h3>
+<h3 class="text-center">
+    Product Categories
+</h3>
 <hr />
 <div class="text-left">
     <a class="btn btn-outline-info" asp-area="Admin"
-       asp-controller="SpecialTag" asp-action="Create">
+       asp-controller="ProductCategory" asp-action="Create">
         <i class="fa fa-plus"> </i>
-        Create Special-Tag
+        Create Category
     </a>
     <br /> <br />
     <button class="btn btn-outline-info fas fa-mouse" onclick="mouseClick()"></button>
@@ -28,19 +27,19 @@
     <thead class="table-dark">
     <tr>
         <th scope="col">Serial</th>
-        <th scope="col">Special Tag</th>
+        <th scope="col">Category</th>
         <th scope="col">#</th>
     </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Tag</td>
-                <td> <partial name="_ButtonPartial" model="item.Id" /> </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Category</td>
+            <td> <partial name="_ButtonPartial" model="item.Id"/> </td>
+        </tr>
+    }
 
     </tbody>
 </table>
