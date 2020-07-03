@@ -1,23 +1,21 @@
 ﻿@model IEnumerable<Product>
 
 @{
-    ViewData["Title"] = "Product Categories";
-    ViewData["CrudController"] = "ProductCategory";
+    ViewData["Title"] = "Product";
+    ViewData["CrudController"] = "Product";
     Layout = "_Layout";
 }
 
 <h3 class="text-center">
-    Product Categories
+    Product List
 </h3>
 <hr />
 <div class="text-left">
     <a class="btn btn-outline-info" asp-area="Admin"
-       asp-controller="ProductCategory" asp-action="Create">
+       asp-controller="Product" asp-action="Create">
         <i class="fa fa-plus"> </i>
-        Create Category
+        Create Product
     </a>
-    <br /> <br />
-    <button class="btn btn-outline-info fas fa-mouse" onclick="mouseClick()"></button>
 </div>
 
 <br />
@@ -25,21 +23,27 @@
 
 <table class="table table-striped text-center">
     <thead class="table-dark">
-    <tr>
-        <th scope="col">Serial</th>
-        <th scope="col">Category</th>
-        <th scope="col">#</th>
-    </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Color</th>
+            <th scope="col">Available</th>
+            <th scope="col">Category</th>
+            <th scope="col">Special-Tag</th>
+            <th scope="col">#</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <th scope="row">@item.Id</th>
-            <td>@item.Category</td>
-            <td> <partial name="_ButtonPartial" model="item.Id"/> </td>
-        </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.Color</td>
+                <td>@item.IsAvailable</td>
+                <td>@item.Category.Category</td>
+                <td>@item.Tag.Tag</td>
+                <td> <partial name="_ButtonPartial" model="item.Id" /> </td>
+            </tr>
+        }
 
     </tbody>
 </table>
@@ -57,8 +61,5 @@
             
         });
 
-        function mouseClick() {
-            toastr.success('Thanks ):');
-        }
     </script>
 }

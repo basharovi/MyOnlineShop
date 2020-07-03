@@ -5,6 +5,7 @@ using MyOnlineShop.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
 
@@ -24,9 +25,12 @@ namespace MyOnlineShop.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            //var products = _db.Products.
-            return View(_db.Products);
-        }
+            var products = _db.Products.
+                Include(p => p.Category).
+                Include(p=> p.Tag);
+            
+            return View(products);
+        } 
 
         [HttpGet]
         public IActionResult Create()
@@ -46,10 +50,11 @@ namespace MyOnlineShop.Areas.Admin.Controllers
 
             if (product.ImageFile != null)
             {
-                var imagePath = Path.Combine($"{_host.ContentRootPath}/images", product.ImageFile.FileName);
-                await product.ImageFile.CopyToAsync(new MemoryStream());
+                var imagePath = Path.Combine($"{_host.ContentRootPath}/wwwroot/images", product.ImageFile.FileName);
+                await product.ImageFile.CopyToAsync(new FileStream(imagePath,FileMode.Create));
+                
+                product.Image = product.ImageFile.FileName;
             }
-
 
             _db.Add(product);
             await _db.SaveChangesAsync();
@@ -61,55 +66,70 @@ namespace MyOnlineShop.Areas.Admin.Controllers
 
         public IActionResult Show(int? id)
         {
-            var productCategory = _db.ProductCategories.Find(id);
-            if (productCategory == null)
+            var product = _db.Products.Find(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return View(productCategory);
+            ViewData["ProductCategories"] = new SelectList(_db.ProductCategories, "Id", "Category");
+            ViewData["SpecialTags"] = new SelectList(_db.SpecialTags, "Id", "Tag");
+
+            return View(product);
         }
 
         [HttpGet]
         public IActionResult Update(int? id)
         {
-            var productCategory = _db.ProductCategories.Find(id);
-            if (productCategory == null)
+            var product = _db.Products.Find(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return View(productCategory);
+
+            ViewData["ProductCategories"] = new SelectList(_db.ProductCategories, "Id", "Category");
+            ViewData["SpecialTags"] = new SelectList(_db.SpecialTags, "Id", "Tag");
+
+            return View(product);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(ProductCategory productCategory)
+        public async Task<IActionResult> Update(Product product)
         {
             if (!ModelState.IsValid)
                 return View();
 
+            if (product.ImageFile != null)
+            {
+                var imagePath = Path.Combine($"{_host.ContentRootPath}/wwwroot/images", product.ImageFile.FileName);
+                await product.ImageFile.CopyToAsync(new FileStream(imagePath, FileMode.Create));
 
-            _db.Update(productCategory);
+                product.Image = product.ImageFile.FileName;
+            }
+
+
+            _db.Update(product);
             await _db.SaveChangesAsync();
 
-            TempData["crudMessage"] = "Product Category has been Updated Successfully!";
+            TempData["crudMessage"] = "Product has been Updated Successfully!";
 
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int? id)
         {
-            var productCategory = _db.ProductCategories.Find(id);
-            if (productCategory == null)
+            var product = _db.Products.Find(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            _db.ProductCategories.Remove(productCategory);
+            _db.Products.Remove(product);
             _db.SaveChanges();
 
-            TempData["crudMessage"] = "Product Category has been Deleted Successfully!";
+            TempData["crudMessage"] = "Product has been Deleted Successfully!";
 
             return RedirectToAction(nameof(Index));
         }
