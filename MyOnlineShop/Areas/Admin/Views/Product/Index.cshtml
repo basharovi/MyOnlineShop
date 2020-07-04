@@ -21,7 +21,7 @@
 <br />
 
 
-<table class="table table-striped text-center">
+<table class="table table-striped text-center" id="productTable">
     <thead class="table-dark">
         <tr>
             <th scope="col">Name</th>
@@ -58,7 +58,8 @@
             if (crudMessage !== '') {
                 toastr.success(crudMessage);
             }
-            
+
+            $('#productTable').DataTable();
         });
 
     </script>
