@@ -21,7 +21,7 @@
 <br />
 
 
-<table class="table table-striped text-center" id="productTable">
+<table class="table table-striped text-center display" id="productTable">
     <thead class="table-dark">
         <tr>
             <th scope="col">Name</th>
@@ -59,7 +59,14 @@
                 toastr.success(crudMessage);
             }
 
-            $('#productTable').DataTable();
+            //$('#productTable').DataTable();
+
+            $('#productTable').DataTable( {
+                dom: 'lBfrtip',
+                buttons: [
+                    'print', 'csv', 'pdf' ,'copy'
+                ]
+            } );
         });
 
     </script>

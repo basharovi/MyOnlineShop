@@ -56,7 +56,15 @@
                 toastr.success(crudMessage);
             }
 
-            $('#specialTagTable').DataTable();
+            //$('#specialTagTable').DataTable();
+
+
+            $('#specialTagTable').DataTable({
+                dom: 'lBfrtip',
+                buttons: [
+                    'print', 'csv', 'pdf', 'copy'
+                ]
+            });
             
         });
 
