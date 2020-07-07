@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyOnlineShop.Models
 {
@@ -9,5 +10,11 @@ namespace MyOnlineShop.Models
         [Required]
         public string Category { get; set; }
 
+        public List<Product> Products { get; set; }
+
+        public ProductCategory()
+        {
+            Products = new List<Product>();
+        }
     }
 }

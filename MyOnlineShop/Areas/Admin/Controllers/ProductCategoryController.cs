@@ -1,9 +1,10 @@
 ﻿using MyOnlineShop.Data;
 using System.Diagnostics;
+using System.Linq;
 using MyOnlineShop.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 
 
 namespace MyOnlineShop.Areas.Admin.Controllers
@@ -18,6 +19,18 @@ namespace MyOnlineShop.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            var category = _db.ProductCategories.ToList();
+
+            foreach (var c in category)
+            {
+                _db.Entry(c).Collection(c=>c.Products)
+                    .Query()
+                    .Where(m=>m.IsAvailable)
+                    .Load();
+
+                var products = c.Products;
+            }
+
             return View(_db.ProductCategories);
         }
 

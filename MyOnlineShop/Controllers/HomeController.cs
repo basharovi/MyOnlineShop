@@ -4,15 +4,14 @@ using Microsoft.Extensions.Logging;
 using MyOnlineShop.Data;
 using MyOnlineShop.Models;
 
-namespace MyOnlineShop.Areas.Customer.Controllers
+namespace OnlineShop.Controllers
 {
-    [Area("Customer")]
     public class HomeController : Controller
     {
-        private readonly ILogger<OnlineShop.Controllers.HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<OnlineShop.Controllers.HomeController> logger, ApplicationDbContext db)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
             _db = db;
@@ -20,9 +19,7 @@ namespace MyOnlineShop.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            var products = _db.Products;
-
-            return View(products);
+            return View();
         }
 
         public IActionResult Privacy()

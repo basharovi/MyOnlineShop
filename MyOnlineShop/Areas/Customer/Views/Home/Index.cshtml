@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Product>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +8,27 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+  <div class="row">
+      @foreach (var item in Model)
+      {
+          <div class="col-lg-3 col-md-6 p-3">
+
+              <div class="card" style="width: 15rem;">
+                  @{
+                      var imageName = string.IsNullOrWhiteSpace(item.Image) ? "No-Image-Available.png" : item.Image;
+                  }
+                  <img src="~/images/@imageName" class="card-img-top" height="175" alt="Product Image">
+                  <div class="card-body">
+                      <h5 class="card-title">@item.Name</h5>
+                      <p class="card-text">Price : @item.Price BDT.</p>
+
+                      <a asp-area="Admin" asp-controller="Product" asp-route-id="@item.Id"
+                         asp-action="Show" class="btn btn-primary"> Details
+                      </a>
+                  </div>
+              </div>
+          </div>
+      }
+  </div>
+
