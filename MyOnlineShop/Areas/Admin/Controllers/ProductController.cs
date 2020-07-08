@@ -109,7 +109,7 @@ namespace MyOnlineShop.Areas.Admin.Controllers
                 product.Image = product.ImageFile.FileName;
             }
 
-
+             
             _db.Update(product);
             await _db.SaveChangesAsync();
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -43,27 +44,42 @@ namespace MyOnlineShop.Areas.Customer.Controllers
                 return NotFound();
             }
 
+            //if (HttpContext?.Session.GetString("SessionProducts") == null)
+            //{
+            //    return View(product);
+            //}
+
+            //var sessionProducts = JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
+
+            //TempData["isAddedToCart"] = sessionProducts.Any(m => m.Id == id);
+
             return View(product);
         }
 
         [HttpPost]
-        public IActionResult Show(int id)
+        public async Task<IActionResult> Show(int id)
         {
-            var product = _db.Products
+            var product = await _db.Products
                 .Include(p => p.Category)
                 .Include(p => p.Tag)
-                .FirstOrDefault(p => p.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)  
                 return NotFound();
 
 
-            var products = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>() 
+            var sessionProducts = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>() 
                 : JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
 
-            products.Add(product);
+            var sProduct = sessionProducts.Find(p=> p.Id == id); // sProduct = session Product
 
-            HttpContext?.Session.SetString("SessionProducts", JsonConvert.SerializeObject(products, Formatting.Indented,
+            if (sProduct is null)
+                sessionProducts.Add(product);
+            else
+                sessionProducts.Remove(sProduct);
+
+
+            HttpContext?.Session.SetString("SessionProducts", JsonConvert.SerializeObject(sessionProducts, Formatting.Indented,
                 new JsonSerializerSettings() {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 }));
@@ -72,10 +88,7 @@ namespace MyOnlineShop.Areas.Customer.Controllers
             return View(product);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
