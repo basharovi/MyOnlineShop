@@ -132,9 +132,6 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\bin\Debug\netcoreapp3.1\runtimes\w
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csprojAssemblyReference.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.AssemblyInfoInputs.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.AssemblyInfo.cs
-H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csproj.CoreCompileInputs.cache
-H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cs
-H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.RazorAssemblyInfo.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.RazorAssemblyInfo.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.TagHelpers.input.cache
@@ -178,3 +175,7 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineSh
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Show.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CartPartial.cshtml.g.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csproj.CoreCompileInputs.cache
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cache

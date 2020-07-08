@@ -4,17 +4,15 @@ using Microsoft.Extensions.Logging;
 using MyOnlineShop.Data;
 using MyOnlineShop.Models;
 
-namespace OnlineShop.Controllers
+namespace MyOnlineShop.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _db = db;
         }
 
         public IActionResult Index()

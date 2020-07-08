@@ -1,21 +1,23 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyOnlineShop.Data;
 using MyOnlineShop.Models;
+using Newtonsoft.Json;
 
 namespace MyOnlineShop.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class HomeController : Controller
     {
-        private readonly ILogger<OnlineShop.Controllers.HomeController> _logger;
+        private readonly ILogger<MyOnlineShop.Controllers.HomeController> _logger;
         private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<OnlineShop.Controllers.HomeController> logger, ApplicationDbContext db)
+        public HomeController(ILogger<MyOnlineShop.Controllers.HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
             _db = db;
@@ -47,11 +49,24 @@ namespace MyOnlineShop.Areas.Customer.Controllers
         [HttpPost]
         public IActionResult Show(int id)
         {
-            var product = _db.Products.Find(id);
-            if (product == null)
-            {
+            var product = _db.Products
+                .Include(p => p.Category)
+                .Include(p => p.Tag)
+                .FirstOrDefault(p => p.Id == id);
+
+            if (product == null)  
                 return NotFound();
-            }
+
+
+            var products = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>() 
+                : JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
+
+            products.Add(product);
+
+            HttpContext?.Session.SetString("SessionProducts", JsonConvert.SerializeObject(products, Formatting.Indented,
+                new JsonSerializerSettings() {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }));
 
 
             return View(product);
