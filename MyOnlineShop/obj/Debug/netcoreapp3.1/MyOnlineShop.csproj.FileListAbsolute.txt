@@ -178,3 +178,4 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\View
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csproj.CoreCompileInputs.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cache
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\MyCart.cshtml.g.cs

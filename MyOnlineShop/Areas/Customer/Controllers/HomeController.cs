@@ -24,12 +24,7 @@ namespace MyOnlineShop.Areas.Customer.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
-        {
-            var products = _db.Products;
-
-            return View(products);
-        }
+        public IActionResult Index() => View(_db.Products);
 
         [HttpGet]
         public IActionResult Show(int? id)
@@ -43,15 +38,6 @@ namespace MyOnlineShop.Areas.Customer.Controllers
             {
                 return NotFound();
             }
-
-            //if (HttpContext?.Session.GetString("SessionProducts") == null)
-            //{
-            //    return View(product);
-            //}
-
-            //var sessionProducts = JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
-
-            //TempData["isAddedToCart"] = sessionProducts.Any(m => m.Id == id);
 
             return View(product);
         }
@@ -89,6 +75,29 @@ namespace MyOnlineShop.Areas.Customer.Controllers
         }
 
         public IActionResult Privacy() => View();
+
+        [HttpGet]
+        public IActionResult MyCart() => View();
+
+        [HttpPost]
+        public IActionResult MyCart(int id)
+        {
+            var sessionProducts = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>()
+                : JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
+
+            var sProduct = sessionProducts.Find(p => p.Id == id); // sProduct = session Product
+
+            if (sProduct != null)
+                sessionProducts.Remove(sProduct);
+
+            HttpContext?.Session.SetString("SessionProducts", JsonConvert.SerializeObject(sessionProducts, Formatting.Indented,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }));
+
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
