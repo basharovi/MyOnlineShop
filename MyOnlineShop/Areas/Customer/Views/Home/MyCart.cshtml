@@ -11,6 +11,7 @@
     var products = HttpContextAccessor.HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>()
         : JsonConvert.DeserializeObject<List<Product>>(HttpContextAccessor.HttpContext.Session.GetString("SessionProducts"));
 
+    decimal totalAmount = 0;
 }
 
 <h3 class="text-center">
@@ -47,6 +48,7 @@
                 <td>
                     @{
                         var imageName = string.IsNullOrWhiteSpace(item.Image) ? "No-Image-Available.png" : item.Image;
+                        totalAmount += item.Price;
                     }
 
                     <img src="~/images/@imageName" class="img-thumbnail" height="100" width="100" alt="Product Image">
@@ -67,6 +69,23 @@
                 </td>
             </tr>
         }
+        
+    @{ var isCartEmpty = products.Count > 0 ? "" : "disabled";}
+
+    <tr class="text-left">
+        <td colspan="6">
+            <div>
+                Grand Total : @totalAmount
+            </div>
+            <div class="mt-2">
+                <button type="button" class="btn btn-info @isCartEmpty"
+                        title="Checkout">
+                    Proceed to Checkout
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
 
     </tbody>
 </table>
