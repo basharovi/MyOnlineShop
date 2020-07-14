@@ -1,0 +1,118 @@
+﻿@model Order
+@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var products = HttpContextAccessor.HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>()
+        : JsonConvert.DeserializeObject<List<Product>>(HttpContextAccessor.HttpContext.Session.GetString("SessionProducts"));
+
+}
+
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "_Layout";
+}
+
+<h3 class="text-center">
+    Checkout
+</h3>
+<hr />
+
+<form asp-action="Checkout" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header text-danger" asp-validation-summary="All">
+
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+
+                    <div class="row">
+
+                        <div class="row col-12">
+                            <label asp-for="Name" class="form-check font-weight-bold col-4"></label>
+
+                            <input asp-for="Name" class="form-control col-8" required
+                                   placeholder="Enter Name" />
+
+                        </div>
+
+                        <div class="row col-12 mt-3">
+                            <label asp-for="PhoneNo" class="form-check font-weight-bold col-4"></label>
+
+                            <input asp-for="PhoneNo" class="form-control col-8" required
+                                   placeholder="Enter Phone No" />
+                        </div>
+
+                        <div class="row col-12 mt-3">
+                            <label asp-for="Email" class="form-check font-weight-bold col-4"></label>
+
+                            <input asp-for="Email" class="form-control col-8" type="email" required
+                                   placeholder="Enter Email" />
+                        </div>
+
+                        <div class="row col-12 mt-3">
+                            <label asp-for="Address" class="form-check font-weight-bold col-4"></label>
+
+                            <textarea asp-for="Address" class="form-control col-8" required
+                                      placeholder="Enter Address"></textarea>
+                        </div>
+
+                        <div class="row col-12 mt-3">
+                            <label asp-for="OrderDate" class="form-check font-weight-bold col-4"></label>
+
+                            <input asp-for="OrderDate" class="form-control col-8" type="date" required />
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+
+                    <table class="table text-center" id="productTable">
+                        <thead class="table-active">
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in products)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @{
+                                            var imageName = string.IsNullOrWhiteSpace(item.Image) ? "No-Image-Available.png" : item.Image;
+                                        }
+
+                                        <img src="~/images/@imageName" class="img-thumbnail" height="100" width="100" alt="Product Image">
+                                    </td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Price</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="offset-md-3 col-md-2 mt-2">
+                    <input type="submit" class="btn btn-outline-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+
+</script>
+
+
