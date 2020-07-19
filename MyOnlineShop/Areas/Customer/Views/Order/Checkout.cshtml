@@ -7,6 +7,7 @@
     var products = HttpContextAccessor.HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>()
         : JsonConvert.DeserializeObject<List<Product>>(HttpContextAccessor.HttpContext.Session.GetString("SessionProducts"));
 
+    decimal totalAmount = 0;
 }
 
 @{
@@ -60,12 +61,11 @@
                                       placeholder="Enter Address"></textarea>
                         </div>
 
-                        <div class="row col-12 mt-3">
+                        @*<div class="row col-12 mt-3">
                             <label asp-for="OrderDate" class="form-check font-weight-bold col-4"></label>
 
                             <input asp-for="OrderDate" class="form-control col-8" type="date" required />
-                        </div>
-
+                        </div>*@
 
                     </div>
                 </div>
@@ -81,24 +81,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in products)
+                            @foreach (var product in products)
                             {
 
                                 <tr>
                                     <td>
                                         @{
-                                            var imageName = string.IsNullOrWhiteSpace(item.Image) ? "No-Image-Available.png" : item.Image;
+                                            var imageName = string.IsNullOrWhiteSpace(product.Image) ? "No-Image-Available.png" : product.Image;
+                                            totalAmount += product.Price;
                                         }
 
                                         <img src="~/images/@imageName" class="img-thumbnail" height="100" width="100" alt="Product Image">
                                     </td>
-                                    <td>@item.Name</td>
-                                    <td>@item.Price</td>
+                                    <td>@product.Name</td>
+                                    <td>@product.Price</td>
                                 </tr>
                             }
 
                         </tbody>
                     </table>
+                    
+                    <div>
+                        Grand Total : @totalAmount
+                    </div>
                 </div>
 
 

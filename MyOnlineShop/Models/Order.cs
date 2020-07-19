@@ -7,10 +7,15 @@ namespace MyOnlineShop.Models
 {
     public class Order
     {
+        public Order()
+        {
+            OrderDetails = new List<OrderDetails>();
+        }
+
         public int Id { get; set; }
 
         [DisplayName("Order No")]
-        public string OrderNo { get; set; }
+        public string OrderNo { get; set; } = Guid.NewGuid().ToString();
 
         [Required]
         public string Name { get; set; }
@@ -27,7 +32,7 @@ namespace MyOnlineShop.Models
         [Required]
         public string Address { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
 
         public List<OrderDetails> OrderDetails { get; set; }
     }
