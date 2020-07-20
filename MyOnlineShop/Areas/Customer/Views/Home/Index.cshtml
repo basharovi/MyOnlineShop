@@ -1,29 +1,35 @@
-﻿@model IEnumerable<Product>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+@model IPagedList<Product>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-  <div class="row">
-      @foreach (var item in Model)
-      {
-          <div class="col-lg-3 col-md-6 p-3">
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6 p-3">
 
-              <div class="card" style="width: 15rem;">
-                  @{
-                      var imageName = string.IsNullOrWhiteSpace(item.Image) ? "No-Image-Available.png" : item.Image;
-                  }
-                  <img src="~/images/@imageName" class="card-img-top" height="175" alt="Product Image">
-                  <div class="card-body">
-                      <h5 class="card-title">@item.Name</h5>
-                      <p class="card-text">Price : @item.Price BDT.</p>
+            <div class="card" style="width: 15rem;">
+                @{
+                    var imageName = string.IsNullOrWhiteSpace(item.Image) ? "No-Image-Available.png" : item.Image;
+                }
+                <img src="~/images/@imageName" class="card-img-top" height="175" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">Price : @item.Price BDT.</p>
 
-                      <a asp-area="Customer" asp-controller="Home" asp-route-id="@item.Id"
-                         asp-action="Show" class="btn btn-outline-info"> Details
-                      </a>
-                  </div>
-              </div>
-          </div>
-      }
-  </div>
+                    <a asp-area="Customer" asp-controller="Home" asp-route-id="@item.Id"
+                       asp-action="Show" class="btn btn-outline-info"> Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.PagedListPager(Model, p=> Href("/Home?page=" + p))
+</div>
 

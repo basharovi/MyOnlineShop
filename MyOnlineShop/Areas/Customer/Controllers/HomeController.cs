@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using MyOnlineShop.Data;
 using MyOnlineShop.Models;
 using Newtonsoft.Json;
+using X.PagedList;
 
 namespace MyOnlineShop.Areas.Customer.Controllers
 {
@@ -24,7 +25,10 @@ namespace MyOnlineShop.Areas.Customer.Controllers
             _db = db;
         }
 
-        public IActionResult Index() => View(_db.Products);
+        public async Task<IActionResult>  Index(int? page)
+        {
+            return  View(await _db.Products.ToPagedListAsync(page ?? 1, 4));
+        }
 
         [HttpGet]
         public IActionResult Show(int? id)
