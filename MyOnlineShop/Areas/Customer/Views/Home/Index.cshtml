@@ -22,7 +22,8 @@
                     <p class="card-text">Price : @item.Price BDT.</p>
 
                     <a asp-area="Customer" asp-controller="Home" asp-route-id="@item.Id"
-                       asp-action="Show" class="btn btn-outline-info"> Details
+                       asp-action="Show" class="btn btn-outline-info">
+                        Details
                     </a>
                 </div>
             </div>
@@ -30,6 +31,21 @@
     }
 </div>
 <div>
-    @Html.PagedListPager(Model, p=> Href("/Home?page=" + p))
+    @Html.PagedListPager(Model, p => Href("/Home?page=" + p))
 </div>
 
+@section Scripts
+{
+    <script>
+        $(function () {
+
+            var crudMessage = '@TempData["crudMessage"]';
+
+            if (crudMessage !== '') {
+                toastr.success(crudMessage);
+            }
+
+        });
+
+    </script>
+}

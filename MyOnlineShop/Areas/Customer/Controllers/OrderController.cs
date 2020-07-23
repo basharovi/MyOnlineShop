@@ -18,11 +18,6 @@ namespace MyOnlineShop.Areas.Customer.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Checkout()
         {
             return View();
@@ -32,7 +27,8 @@ namespace MyOnlineShop.Areas.Customer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Checkout(Order anOrder)
         {
-            var sessionProducts = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>()
+            var sessionProducts = HttpContext?.Session.GetString("SessionProducts") == null 
+                ? new List<Product>()
                 : JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
 
             foreach (var product in sessionProducts)
@@ -44,16 +40,18 @@ namespace MyOnlineShop.Areas.Customer.Controllers
             }
 
             await _db.Orders.AddAsync(anOrder);
-            var isDone = await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
 
-            // Made Session Null
+            TempData["crudMessage"] = "Your order is placed Successfully!";
+
+            // Make Session Null
             HttpContext?.Session.SetString("SessionProducts", JsonConvert.SerializeObject(new List<Product>(), Formatting.Indented,
                 new JsonSerializerSettings()
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 }));
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
