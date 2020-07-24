@@ -6,20 +6,20 @@
 }
 
     <h3 class="text-center">
-        Register
+        Update User
     </h3>
 <hr />
 
 <div>
-    <a class="btn btn-outline-info" asp-area="Admin"
-       asp-controller="Product" asp-action="Index">
+    <a class="btn btn-outline-info" asp-area="Customer"
+       asp-controller="User" asp-action="List">
         <i class="fas fa-arrow-left"> </i>
         &nbsp; Back to List
     </a>
 </div>
 
 <br />
-<form asp-action="Register" method="post" enctype="multipart/form-data">
+<form asp-action="Update" method="post" enctype="multipart/form-data">
     <div class="card">
         <div class="card-header text-danger" asp-validation-summary="All">
 
@@ -34,7 +34,7 @@
                         <div class="row col-12">
                             <label asp-for="FirstName" class="form-check font-weight-bold col-4"></label>
 
-                            <input asp-for="FirstName" class="form-control col-8"
+                            <input asp-for="FirstName" class="form-control col-8" required
                                    placeholder="Enter First Name" />
 
                         </div>
@@ -42,37 +42,28 @@
                         <div class="row col-12 mt-3">
                             <label asp-for="LastName" class="form-check font-weight-bold col-4"></label>
 
-                            <input asp-for="LastName" class="form-control col-8"
+                            <input asp-for="LastName" class="form-control col-8" required
                                    placeholder="Enter Last Name" />
                         </div>
 
                         <div class="row col-12 mt-3">
                             <label asp-for="Email" class="form-check font-weight-bold col-4"></label>
 
-                            <input asp-for="Email" class="form-control col-8"
+                            <input asp-for="Email" class="form-control col-8" required type="email"
                                    placeholder="Enter Email" />
                         </div>
 
                         <div class="row col-12 mt-3">
                             <label asp-for="PhoneNumber" class="form-check font-weight-bold col-4"></label>
 
-                            <input asp-for="PhoneNumber" class="form-control col-8"
+                            <input asp-for="PhoneNumber" class="form-control col-8" required
                                    placeholder="Enter Phone Number" type="number"/>
                         </div>
                         
                         <div class="row col-12 mt-3">
                             <label asp-for="UserName" class="form-check font-weight-bold col-4"></label>
 
-                            <input asp-for="UserName" class="form-control col-8"
-                                   placeholder="Enter Username" />
-                        </div>
-
-                        <div class="row col-12 mt-3">
-                            <label asp-for="PasswordHash" class="form-check font-weight-bold col-4"></label>
-
-                            <input asp-for="PasswordHash" class="form-control col-8"
-                                   placeholder="Enter Password" type="password"/>
-
+                            <input asp-for="UserName" class="form-control col-8" readonly/>
                         </div>
 
                     </div>
