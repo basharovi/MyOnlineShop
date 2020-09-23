@@ -139,9 +139,6 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\bin\Debug\netcoreapp3.1\runtimes\w
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csprojAssemblyReference.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.AssemblyInfoInputs.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.AssemblyInfo.cs
-H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csproj.CoreCompileInputs.cache
-H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cs
-H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.RazorAssemblyInfo.cache
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.RazorAssemblyInfo.cs
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.TagHelpers.input.cache
@@ -230,3 +227,8 @@ H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\staticweba
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.dll
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.pdb
 H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.genruntimeconfig.cache
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\bin\Debug\netcoreapp3.1\Npgsql.dll
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.csproj.CoreCompileInputs.cache
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cs
+H:\Running_Projects\MyOnlineShop\MyOnlineShop\obj\Debug\netcoreapp3.1\MyOnlineShop.MvcApplicationPartsAssemblyInfo.cache

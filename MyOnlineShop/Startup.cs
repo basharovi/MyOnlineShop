@@ -22,17 +22,17 @@ namespace MyOnlineShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<PostgresDbContext>(options =>
+                options.UseNpgsql(
+                    Configuration.GetConnectionString("PostgresConnection")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("SqlServerConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options =>
+                    options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
-
-            //services.AddControllers().AddNewtonsoftJson(options =>
-            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            //);
 
             services.AddSession(options =>
             {
@@ -59,15 +59,13 @@ namespace MyOnlineShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
+            app.UseStaticFiles();
             app.UseRouting();
-            
+            app.UseSession();
+
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
