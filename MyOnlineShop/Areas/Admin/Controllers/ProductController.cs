@@ -14,10 +14,10 @@ namespace MyOnlineShop.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly PostgresDbContext _db;
         private readonly IHostEnvironment _host;
 
-        public ProductController(ApplicationDbContext db, IHostEnvironment host)
+        public ProductController(PostgresDbContext db, IHostEnvironment host)
         {
             _db = db;
             _host = host;
