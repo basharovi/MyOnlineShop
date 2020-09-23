@@ -12,10 +12,10 @@ namespace MyOnlineShop.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductCategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly PostgresDbContext _db;
 
 
-        public ProductCategoryController(ApplicationDbContext db) => _db = db;
+        public ProductCategoryController(PostgresDbContext db) => _db = db;
 
         public IActionResult Index()
         {
