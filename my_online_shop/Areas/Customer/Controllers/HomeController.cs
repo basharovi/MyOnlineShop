@@ -16,10 +16,10 @@ namespace MyOnlineShop.Areas.Customer.Controllers
     [Area("Customer")]
     public class HomeController : Controller
     {
-        private readonly ILogger<MyOnlineShop.Controllers.HomeController> _logger;
+        private readonly ILogger<my_online_shop.Controllers.HomeController> _logger;
         private readonly PostgresDbContext _db;
 
-        public HomeController(ILogger<MyOnlineShop.Controllers.HomeController> logger, PostgresDbContext db)
+        public HomeController(ILogger<my_online_shop.Controllers.HomeController> logger, PostgresDbContext db)
         {
             _logger = logger;
             _db = db;

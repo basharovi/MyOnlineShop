@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MyOnlineShop.Data;
 using MyOnlineShop.Models;
 
-namespace MyOnlineShop.Controllers
+namespace my_online_shop.Controllers
 {
     public class HomeController : Controller
     {
