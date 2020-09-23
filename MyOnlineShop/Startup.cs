@@ -24,7 +24,7 @@ namespace MyOnlineShop
         {
             services.AddDbContext<PostgresDbContext>(options =>
                 options.UseNpgsql(
-                    Configuration.GetConnectionString("PostgresConnection")));
+                    Configuration.GetConnectionString("PostgresHeroKu")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
