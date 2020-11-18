@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,34 +17,53 @@ namespace MyOnlineShop.Areas.Customer.Controllers
     [Area("Customer")]
     public class HomeController : Controller
     {
-        private readonly ILogger<MyOnlineShop.Controllers.HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<MyOnlineShop.Controllers.HomeController> logger, ApplicationDbContext db)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
             _db = db;
         }
 
-        public async Task<IActionResult>  Index(int? page)
+        public async Task<IActionResult> Index(int? page)
         {
-            return  View(await _db.Products.ToPagedListAsync(page ?? 1, 4));
+            return View(await _db.Products.ToPagedListAsync(page ?? 1, 4));
         }
 
         [HttpGet]
         public IActionResult Show(int? id)
         {
-            var product = _db.Products
+            if (id == null)
+            {
+                _logger.LogInformation("Id is Null!");
+
+                return NotFound("Id is Null");
+            }
+            try
+            {
+                var product = _db.Products
                 .Include(p => p.Category)
                 .Include(p => p.Tag)
-                .FirstOrDefault(p=> p.Id == id);
+                .FirstOrDefault(p => p.Id == id);
 
-            if (product == null)
+                _logger.LogDebug(product.Name);
+
+                return View(product);
+            }
+            catch (NullReferenceException)
             {
-                return NotFound();
+                _logger.LogInformation("There is no product with this Id : {0}", id);
+
+                return NotFound($"There is no product with this Id : {id}");
             }
 
-            return View(product);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured!");
+            }
+
+            return View();
         }
 
         [HttpPost]
@@ -54,14 +74,14 @@ namespace MyOnlineShop.Areas.Customer.Controllers
                 .Include(p => p.Tag)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
-            if (product == null)  
+            if (product == null)
                 return NotFound();
 
 
-            var sessionProducts = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>() 
+            var sessionProducts = HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>()
                 : JsonConvert.DeserializeObject<List<Product>>(HttpContext.Session.GetString("SessionProducts"));
 
-            var sProduct = sessionProducts.Find(p=> p.Id == id); // sProduct = session Product
+            var sProduct = sessionProducts.Find(p => p.Id == id); // sProduct = session Product
 
             if (sProduct is null)
                 sessionProducts.Add(product);
@@ -70,7 +90,8 @@ namespace MyOnlineShop.Areas.Customer.Controllers
 
 
             HttpContext?.Session.SetString("SessionProducts", JsonConvert.SerializeObject(sessionProducts, Formatting.Indented,
-                new JsonSerializerSettings() {
+                new JsonSerializerSettings()
+                {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 }));
 
