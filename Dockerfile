@@ -18,7 +18,5 @@ COPY --from=build-env /app/out .
 
 # Run the app on container startup
 # Use your project name for the second parameter
-# e.g. MyProject.dll
-# ENTRYPOINT [ "dotnet", "HerokuApp.dll" ]
-# Use the following instead for Heroku
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet HerokuApp.dll
+
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet my_online_shop.dll
