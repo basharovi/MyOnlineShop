@@ -1,0 +1,61 @@
+﻿@model my_online_shop.Models.SpecialTag
+
+@{
+    ViewData["Title"] = "Create Special Tag";
+    Layout = "_Layout";
+}
+
+    <h3 class="text-center">
+        Create Product Special Tag
+    </h3>
+<hr />
+
+<div>
+    <a class="btn btn-outline-info" 
+       asp-controller="SpecialTag" asp-action="Index">
+        <i class="fas fa-arrow-left"> </i>
+        &nbsp; Back to List
+    </a>
+</div>
+
+<br />
+<form asp-action="Create" method="post">
+    <div class="card">
+        <div class="card-header text-danger" asp-validation-summary="All">
+
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="offset-md-3 col-md-6">
+                    <input asp-for="Tag" class="form-control"
+                           placeholder="Enter Special-Tag Name" />
+                </div>
+
+                <div class="offset-md-3 col-md-2 mt-2">
+                    <input type="submit" class="btn btn-outline-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        @*$(function() {
+            var isCreated = @TempData["isCreated"]?.ToString()?.ToLower();
+
+            if (isCreated) {
+                toastr.success('Category Created Successfully!');
+                window.location.replace("/ProductCategory");
+            }
+            else
+                toastr.error('Category Create Failed!');
+        });*@
+        
+    </script>
+}
+

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<my_online_shop.Models.Product>
+
+@{
+    ViewData["Title"] = "Product";
+    ViewData["CrudController"] = "Product";
+    Layout = "_Layout";
+}
+
+<h3 class="text-center">
+    Product List
+</h3>
+<hr />
+<div class="text-left">
+    <a class="btn btn-outline-info" 
+       asp-controller="Product" asp-action="Create">
+        <i class="fa fa-plus"> </i>
+        Create Product
+    </a>
+</div>
+
+<br />
+
+
+<table class="table table-striped text-center display" id="productTable">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Color</th>
+            <th scope="col">Available</th>
+            <th scope="col">Category</th>
+            <th scope="col">Special-Tag</th>
+            <th scope="col">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.Color</td>
+                <td>@item.IsAvailable</td>
+                <td>@item.Category.Category</td>
+                <td>@item.Tag.Tag</td>
+                <td> <partial name="_ButtonPartial" model="item.Id" /> </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+
+            var crudMessage = '@TempData["crudMessage"]';
+
+            if (crudMessage !== '') {
+                toastr.success(crudMessage);
+            }
+
+            //$('#productTable').DataTable();
+
+            $('#productTable').DataTable( {
+                dom: 'lBfrtip',
+                buttons: [
+                    'print', 'csv', 'pdf' ,'copy'
+                ]
+            } );
+        });
+
+    </script>
+}
