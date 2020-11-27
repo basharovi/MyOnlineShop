@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Http
+@using my_online_shop.Models
+@using Newtonsoft.Json
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var count = 0;
+    var products = HttpContextAccessor.HttpContext?.Session.GetString("SessionProducts") == null ? new List<Product>() 
+        : JsonConvert.DeserializeObject<List<Product>>(HttpContextAccessor.HttpContext.Session.GetString("SessionProducts"));
+
+    count = products.Count;
+}
+
+<span>@count</span>
