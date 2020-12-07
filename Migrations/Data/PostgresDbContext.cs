@@ -5,9 +5,25 @@ namespace my_online_shop.Migrations.Data
 {
     public class PostgresDbContext : DbContext
     {
-        public PostgresDbContext(DbContextOptions<PostgresDbContext> options)
-            : base(options)
+        private string _connectionString;
+        private string _migrationAssemblyName;
+
+        public PostgresDbContext(string connectionString, string migrationAssemblyName)
         {
+            _connectionString = connectionString;
+            _migrationAssemblyName = migrationAssemblyName;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
+        {
+            if (!dbContextOptionsBuilder.IsConfigured)
+            {
+                dbContextOptionsBuilder.UseNpgsql(
+                    _connectionString,
+                    m => m.MigrationsAssembly(_migrationAssemblyName));
+            }
+
+            base.OnConfiguring(dbContextOptionsBuilder);
         }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
