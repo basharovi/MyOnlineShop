@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Microsoft.AspNetCore.Http;
+using my_online_shop.Migrations.Data;
 
 namespace my_online_shop
 {
@@ -15,6 +17,13 @@ namespace my_online_shop
 
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<PostgresDbContext>()
+                .WithParameter("connectionString", _connectionString)
+                .WithParameter("migrationAssemblyName", _migrationAssemblyName);
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>()
+                .InstancePerLifetimeScope();
+
             base.Load(builder);
         }
     }
