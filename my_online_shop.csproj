@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
     <None Remove="debug.log" />
+    <None Remove="README.md" />
     <None Remove="ScaffoldingReadMe.txt" />
   </ItemGroup>
 
